@@ -13,6 +13,7 @@ import pluginCProductList from "./plugins/CProductList";
 import pluginCollectionList from "./plugins/CollectionList";
 import pluginGrid from "./plugins/Grid";
 import pluginDropdown from "./plugins/Dropdown";
+import blockHeaderEline from "./plugins/BuiltInBlocks/Headers/Eline";
 import loadEditorEvents from "./events";
 import loadCommands from "./commands";
 import loadPanels from "./panels";
@@ -59,6 +60,7 @@ function Editor({ id }) {
           pluginCollectionList,
           pluginDropdown,
           loadEventsManager,
+          blockHeaderEline,
         ],
         pluginsOpts: {
           // "gjs-preset-webpage": {
