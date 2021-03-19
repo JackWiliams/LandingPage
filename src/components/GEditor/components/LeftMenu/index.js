@@ -89,6 +89,9 @@ const LeftMenu = (props) => {
 
   const onClickPreview = () => {
     props.editor.runCommand("preview");
+    // props.editor.DomComponents.getWrapper().onAll(
+    //   (comp) => comp.is("text") && comp.set({ editable: false })
+    // );
     removeActiveClass("left-menu");
     message.info(
       "Please click the button at the top left corner to turn off preview mode",
@@ -98,7 +101,10 @@ const LeftMenu = (props) => {
   };
 
   const handlePreviewOff = () => {
-    props.editor.runCommand("preview");
+    props.editor.stopCommand("preview");
+    // props.editor.DomComponents.getWrapper().onAll(
+    //   (comp) => comp.is("text") && comp.set({ editable: true })
+    // );
     addActiveClass("left-menu");
     setIsPreview(false);
   };
@@ -125,15 +131,6 @@ const LeftMenu = (props) => {
     removeActiveClass("menu-item");
     addActiveClass(activeClass);
   }, [activeClass]);
-
-  // useEffect(() => {
-  //   if (isAddBlocks == false) {
-  //     let el = document.getElementById("add-blocks").classList;
-  //     if (el != null && el.contains("active")) {
-  //       document.getElementById("add-blocks").classList.remove("active");
-  //     }
-  //   }
-  // }, [isAddBlocks]);
 
   return (
     <div>

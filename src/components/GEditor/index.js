@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import grapesjs from "grapesjs";
-import gjsPresetWebpage from "grapesjs-preset-webpage";
+import gjsBasicBlocks from "grapesjs-blocks-basic";
 import parserPostCSS from "grapesjs-parser-postcss";
 import gjsCustomCode from "grapesjs-custom-code";
+import gjsTabs from "grapesjs-tabs";
+import gjsSlider from "grapesjs-lory-slider";
+import gjsFlexbox from "grapesjs-blocks-flexbox";
+import gjsNav from "grapesjs-navbar";
 import pluginProductList from "./plugins/ProductList";
 import pluginSlider from "./plugins/Slider";
 import pluginRepeater from "./plugins/Repeater";
@@ -31,8 +35,8 @@ function Editor({ id }) {
     if (!editor) {
       const e = grapesjs.init({
         container: "#gjs",
-        //avoidInlineStyle: 1,
-        // fromElement: true,
+        avoidInlineStyle: 1,
+        fromElement: true,
         showOffsets: 1,
         styleManager: { clearProperties: 1 },
         modal: {
@@ -51,26 +55,29 @@ function Editor({ id }) {
         },
         plugins: [
           gjsCustomCode,
+          gjsBasicBlocks,
+          gjsTabs,
+          gjsSlider,
+          gjsTabs,
+          gjsNav,
+          gjsFlexbox,
+
           //gjsPresetWebpage,
-          // parserPostCSS,
-          // pluginProductList,
-          // pluginSlider,
-          // pluginRepeater,
-          // pluginAuthor,
-          // pluginForm,
-          // pluginStickyBar,
-          // pluginCProductList,
-          // pluginGrid,
-          // pluginCollectionList,
-          // pluginDropdown,
+          parserPostCSS,
+          pluginProductList,
+          pluginSlider,
+          pluginRepeater,
+          pluginAuthor,
+          pluginForm,
+          pluginStickyBar,
+          pluginCProductList,
+          pluginGrid,
+          pluginCollectionList,
+          pluginDropdown,
           // loadEventsManager,
-          // blockHeaderEline,
+          blockHeaderEline,
         ],
-        // pluginsOpts: {
-        //   // "gjs-preset-webpage": {
-        //   //   textLayout: "Hello world",
-        //   // },
-        // },
+        pluginsOpts: {},
         canvas: {
           styles: [
             "https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css",
@@ -88,6 +95,7 @@ function Editor({ id }) {
           appendTo: "#blocks",
           blocks: [],
         },
+
         layerManager: {
           appendTo: "#layers",
         },
@@ -119,7 +127,7 @@ function Editor({ id }) {
           ],
         },
       });
-      //  loadEditorEvents(e);
+      loadEditorEvents(e);
       // loadPanels(e);
       loadCommands(e);
       setEditor(e);
