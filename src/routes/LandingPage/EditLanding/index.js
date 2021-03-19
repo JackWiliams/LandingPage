@@ -11,18 +11,14 @@ const EditLanding = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(onNavStyleChange("NAV_STYLE_DRAWER"));
+    dispatch(onNavStyleChange("NAV_STYLE_FULL"));
     message.info(
       intl.formatMessage({
         id: "pages.landing.edit.noti",
       })
     );
   }, []);
-  return (
-    <div className="ld-grapes-wrap">
-      <GEditor id="editor" />
-    </div>
-  );
+  return <GEditor />;
 };
 
 export default EditLanding;

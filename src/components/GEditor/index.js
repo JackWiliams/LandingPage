@@ -18,6 +18,8 @@ import loadEditorEvents from "./events";
 import loadCommands from "./commands";
 import loadPanels from "./panels";
 import loadEventsManager from "./plugins/EventsManager";
+import LeftMenu from "./components/LeftMenu";
+import RightMenu from "./components/RightMenu";
 
 import "grapesjs/dist/css/grapes.min.css";
 import "grapesjs-preset-webpage/dist/grapesjs-preset-webpage.min.css";
@@ -27,15 +29,17 @@ function Editor({ id }) {
 
   useEffect(() => {
     if (!editor) {
-      let e = grapesjs.init({
-        container: `#${id}`,
-        avoidInlineStyle: 1,
-        fromElement: 1,
+      const e = grapesjs.init({
+        container: "#gjs",
+        //avoidInlineStyle: 1,
+        // fromElement: true,
         showOffsets: 1,
         styleManager: { clearProperties: 1 },
         modal: {
           backdrop: false,
         },
+        // Avoid any default panel
+        panels: { defaults: [] },
         storageManager: {
           //autoSave: 0,
           id: "gjs-", // Prefix identifier that will be used on parameters
@@ -47,26 +51,26 @@ function Editor({ id }) {
         },
         plugins: [
           gjsCustomCode,
-          gjsPresetWebpage,
-          parserPostCSS,
-          pluginProductList,
-          pluginSlider,
-          pluginRepeater,
-          pluginAuthor,
-          pluginForm,
-          pluginStickyBar,
-          pluginCProductList,
-          pluginGrid,
-          pluginCollectionList,
-          pluginDropdown,
-          loadEventsManager,
-          blockHeaderEline,
+          //gjsPresetWebpage,
+          // parserPostCSS,
+          // pluginProductList,
+          // pluginSlider,
+          // pluginRepeater,
+          // pluginAuthor,
+          // pluginForm,
+          // pluginStickyBar,
+          // pluginCProductList,
+          // pluginGrid,
+          // pluginCollectionList,
+          // pluginDropdown,
+          // loadEventsManager,
+          // blockHeaderEline,
         ],
-        pluginsOpts: {
-          // "gjs-preset-webpage": {
-          //   textLayout: "Hello world",
-          // },
-        },
+        // pluginsOpts: {
+        //   // "gjs-preset-webpage": {
+        //   //   textLayout: "Hello world",
+        //   // },
+        // },
         canvas: {
           styles: [
             "https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css",
@@ -79,6 +83,13 @@ function Editor({ id }) {
             "//code.jquery.com/jquery-migrate-1.2.1.min.js",
             "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js",
           ],
+        },
+        blockManager: {
+          appendTo: "#blocks",
+          blocks: [],
+        },
+        layerManager: {
+          appendTo: "#layers",
         },
         deviceManager: {
           devices: [
@@ -108,11 +119,28 @@ function Editor({ id }) {
           ],
         },
       });
-      loadEditorEvents(e);
-      loadPanels(e);
+      //  loadEditorEvents(e);
+      // loadPanels(e);
       loadCommands(e);
       setEditor(e);
       e.setDevice("Desktop");
+      e.BlockManager.add("custom-block", {
+        label: "Text Overlay",
+        category: "layers",
+        content: {
+          tagName: "div",
+          draggable: true,
+          attributes: {
+            class: "filter-layer",
+          },
+          components: [
+            {
+              tagName: "div",
+              components: "<span>Important sounding text</span>",
+            },
+          ],
+        },
+      });
     } else {
       if (document) {
         document.getElementById(id).append(editor.render());
@@ -127,7 +155,13 @@ function Editor({ id }) {
     };
   }, []);
 
-  return <div id={id} />;
+  return (
+    <div className="ld-grapes-wrap">
+      <div id="gjs"></div>
+      <LeftMenu editor={editor} />
+      <RightMenu editor={editor} />
+    </div>
+  );
 }
 
 export default Editor;

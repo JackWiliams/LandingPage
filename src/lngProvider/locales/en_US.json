@@ -315,5 +315,15 @@
   "pages.landing.tableColumn.colName": "Landing Page",
   "pages.landing.tableColumn.colStatus": "Status",
   "pages.landing.tableColumn.colDate": "Created Date",
-  "pages.landing.edit.noti": "Please click zoom to get full size window"
+  "pages.landing.edit.noti": "Please click zoom to get full size window",
+  "pages.landing.edit.leftMenu.add": "Add",
+  "pages.landing.edit.leftMenu.sections": "Sections",
+  "pages.landing.edit.leftMenu.desktop": "Desktop",
+  "pages.landing.edit.leftMenu.preview": "Preview",
+  "pages.landing.edit.leftMenu.undo": "Undo",
+  "pages.landing.edit.leftMenu.redo": "Redo",
+  "pages.landing.edit.leftMenu.save": "Save",
+  "pages.landing.edit.leftMenu.setting": "Settings",
+  "pages.landing.edit.leftMenu.publish": "Publish",
+  "pages.landing.edit.leftMenu.quit": "Quit"
 }
