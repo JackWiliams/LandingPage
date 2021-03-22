@@ -24,6 +24,7 @@ import loadPanels from "./panels";
 import loadEventsManager from "./plugins/EventsManager";
 import LeftMenu from "./components/LeftMenu";
 import RightMenu from "./components/RightMenu";
+import StyleManager from "./components/StyleManager";
 
 import "grapesjs/dist/css/grapes.min.css";
 import "grapesjs-preset-webpage/dist/grapesjs-preset-webpage.min.css";
@@ -38,10 +39,10 @@ function Editor({ id }) {
         avoidInlineStyle: 1,
         fromElement: true,
         showOffsets: 1,
-        styleManager: { clearProperties: 1 },
         modal: {
           backdrop: false,
         },
+
         // Avoid any default panel
         panels: { defaults: [] },
         storageManager: {
@@ -99,6 +100,83 @@ function Editor({ id }) {
         layerManager: {
           appendTo: "#layers",
         },
+
+        styleManager: {
+          appendTo: ".styles-container",
+          sectors: [
+            {
+              name: "General",
+              open: false,
+              buildProps: [
+                "float",
+                "display",
+                "position",
+                "top",
+                "right",
+                "left",
+                "bottom",
+              ],
+            },
+            {
+              name: "Dimension",
+              open: false,
+              buildProps: [
+                "width",
+                "height",
+                "max-width",
+                "min-height",
+                "margin",
+                "padding",
+              ],
+            },
+            {
+              name: "Typography",
+              open: false,
+              buildProps: [
+                "font-family",
+                "font-size",
+                "font-weight",
+                "letter-spacing",
+                "color",
+                "line-height",
+                "text-align",
+                "text-shadow",
+              ],
+            },
+            {
+              name: "Decorations",
+              open: false,
+              buildProps: [
+                "border-radius-c",
+                "background-color",
+                "border-radius",
+                "border",
+                "box-shadow",
+                "background",
+              ],
+            },
+            {
+              name: "Extra",
+              open: false,
+              buildProps: ["opacity", "transition", "perspective", "transform"],
+              properties: [
+                {
+                  type: "slider",
+                  property: "opacity",
+                  defaults: 1,
+                  step: 0.01,
+                  max: 1,
+                  min: 0,
+                },
+              ],
+            },
+          ],
+        },
+
+        // selectorManager: {
+        //   appendTo: ".styles-container",
+        // },
+
         deviceManager: {
           devices: [
             {
@@ -168,6 +246,7 @@ function Editor({ id }) {
       <div id="gjs"></div>
       <LeftMenu editor={editor} />
       <RightMenu editor={editor} />
+      <StyleManager editor={editor} />
     </div>
   );
 }

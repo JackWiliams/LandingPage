@@ -1,5 +1,5 @@
 import { FormSettingModal } from "./modals/index";
-import { message } from "antd";
+import { message, notification } from "antd";
 
 export default (editor) => {
   const commands = editor.Commands;
@@ -19,6 +19,30 @@ export default (editor) => {
     modal.onceClose(() => {
       formSettingModal.onClose();
     });
+  });
+
+  /**
+   * Command ẩn component khi click hide on toolbar
+   */
+  commands.add("tlb-hide", (editor) => {
+    const selected = editor.getSelected();
+    if (selected) {
+      selected.addAttributes({ style: "display : none" });
+      notification.info({
+        message: `You've just hidden an element`,
+        description:
+          "Please click sections button to find if you want to make that element visible again",
+        duration: null,
+        placement: "topLeft",
+      });
+    }
+  });
+
+  /**
+   * Command open style manager
+   */
+  commands.add("tlb-style-detail", (editor) => {
+    document.getElementById("ld-style-manager").classList.add("active");
   });
 
   commands.add("store", {

@@ -1,18 +1,7 @@
-import React, { useState, useEffect } from "react";
 import { Select } from "antd";
-import grapesjs from "grapesjs";
-import {
-  EyeOutlined,
-  PlusCircleOutlined,
-  ProfileOutlined,
-  DesktopOutlined,
-  ReloadOutlined,
-  MobileOutlined,
-  TabletOutlined,
-} from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 
-const mapStateToProps = () => ({});
 const AddBlocks = (props) => {
   const intl = useIntl();
   const [className, setClassName] = useState("ld-add-blocks");

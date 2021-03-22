@@ -5,7 +5,6 @@ import { RepeaterSettingModal } from "./modals";
 import { cmdEvents } from "./plugins/EventsManager/constants";
 
 function renderItems(data) {
-  console.log("render items");
   templateSettings.interpolate = /{{([\s\S]+?)}}/g;
   var compiled = template("<div>{{ name }}</div>");
   return compiled(data);
@@ -109,7 +108,7 @@ export default (editor) => {
 
     // get the selected componnet and its default toolbar
     const selectedComponent = editor.getSelected();
-    const defaultToolbar = selectedComponent.get("toolbar");
+    //const defaultToolbar = selectedComponent.get("toolbar");
 
     selectedComponent.set({
       toolbar: [
