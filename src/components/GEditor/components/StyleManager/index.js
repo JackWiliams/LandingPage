@@ -51,7 +51,7 @@ const StyleManager = (props) => {
 
   useEffect(() => {
     onClickClose();
-    document.getElementById("ld-setting-tab").classList.add("active");
+    document.getElementById("ld-style-tab").classList.add("active");
   }, []);
 
   return (
@@ -67,7 +67,7 @@ const StyleManager = (props) => {
         </div>
         <div className="ld-style-manager-radio">
           <Radio.Group
-            defaultValue={1}
+            defaultValue={4}
             buttonStyle="solid"
             onChange={onChangeTab}
           >

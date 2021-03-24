@@ -7,6 +7,8 @@ import gjsTabs from "grapesjs-tabs";
 import gjsSlider from "grapesjs-lory-slider";
 import gjsFlexbox from "grapesjs-blocks-flexbox";
 import gjsNav from "grapesjs-navbar";
+import gjsExport from "grapesjs-plugin-export";
+import gjsForm from "grapesjs-plugin-forms";
 import pluginProductList from "./plugins/ProductList";
 import pluginSlider from "./plugins/Slider";
 import pluginRepeater from "./plugins/Repeater";
@@ -21,6 +23,7 @@ import blockHeaderEline from "./plugins/BuiltInBlocks/Headers/Eline";
 import loadEditorEvents from "./events";
 import loadCommands from "./commands";
 import loadPanels from "./panels";
+import gjsPresetWebpage from "grapesjs-preset-webpage";
 import loadEventsManager from "./plugins/EventsManager";
 import LeftMenu from "./components/LeftMenu";
 import RightMenu from "./components/RightMenu";
@@ -62,6 +65,8 @@ function Editor({ id }) {
           gjsTabs,
           gjsNav,
           gjsFlexbox,
+          gjsExport,
+          gjsForm,
 
           //gjsPresetWebpage,
           parserPostCSS,

@@ -322,8 +322,9 @@
   "pages.landing.edit.leftMenu.preview": "Preview",
   "pages.landing.edit.leftMenu.undo": "Undo",
   "pages.landing.edit.leftMenu.redo": "Redo",
-  "pages.landing.edit.leftMenu.save": "Save",
-  "pages.landing.edit.leftMenu.setting": "Settings",
-  "pages.landing.edit.leftMenu.publish": "Publish",
-  "pages.landing.edit.leftMenu.quit": "Quit"
+  "pages.landing.edit.rightMenu.save": "Save",
+  "pages.landing.edit.rightMenu.setting": "Settings",
+  "pages.landing.edit.rightMenu.advanced": "Advanced",
+  "pages.landing.edit.rightMenu.publish": "Publish",
+  "pages.landing.edit.rightMenu.quit": "Quit"
 }
